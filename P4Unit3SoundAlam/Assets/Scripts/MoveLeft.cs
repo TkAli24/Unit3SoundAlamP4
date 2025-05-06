@@ -18,8 +18,16 @@ public class MoveLeft : MonoBehaviour
     {
         if (playerControllerScript.gameOver == false)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            if (playerControllerScript.doubleSpeed)
+            { 
+                transform.Translate(Vector3.left * Time.deltaTime * (speed * 2)); 
+            }
+            else
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * speed);
+            }
         }
+               
        if (transform.position.x < leftBond && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
